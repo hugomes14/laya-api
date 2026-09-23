@@ -1,2 +1,9 @@
 Flask==3.1.1
 gunicorn==23.0.0
+laya==0.3.5
+torch==2.14.0
+transformers==5.17.0
+huggingface_hub==1.32.0
+safetensors==0.8.0
+tokenizers==0.23.2
+numpy==2.5.3

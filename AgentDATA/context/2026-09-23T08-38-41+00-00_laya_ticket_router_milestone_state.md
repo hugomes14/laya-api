@@ -2,16 +2,18 @@
 
 - Timestamp: `2026-09-23T08:38:41+00:00`
 - Autor: `agent`
-- Escopo: continuidade do Laya Ticket Router após o Milestone 1
+- Escopo: continuidade do Laya Ticket Router após o Milestone 2
 
 ## Estado observado
 
-- Milestone 1 concluído: Flask app factory, `/health`, `/ready`, Dockerfile,
-  Docker Compose, dependências e testes de API.
-- `/health` responde `200` para liveness; `/ready` responde `503` até o modelo
-  ser integrado, comportamento intencional antes do Milestone 2.
-- Os testes atuais passam: `3 passed`.
-- O Docker Compose e a construção da imagem foram validados no Milestone 1.
+- Milestones 1 e 2 concluídos: Flask app factory, `/health`, `/ready`,
+  `app/classifier.py`, carga do Laya no startup e `POST /v1/classify-only`.
+- `/health` responde `200` para liveness; `/ready` responde `503` até o
+  checkpoint carregar e `200` depois da carga.
+- Benchmark local com 2 aquecimentos e 10 medições no Xeon E5-1650 v2: carga
+  81.78 s; média de inferência 2255.5 ms; mediana 2330.3 ms; p95 2437.1 ms.
+- A imagem Docker Python 3.12 com PyTorch CPU foi construída com sucesso; a
+  configuração Compose e a sintaxe Python foram validadas.
 - O baseline em `AgentDATA/Knowledge/` é a referência canónica de
   implementação; a especificação original foi retirada após a consolidação.
 - O workspace é um repositório Git na branch `main`, a acompanhar
@@ -23,13 +25,15 @@
   como resumo técnico reutilizável do plano.
 - Preservar classificação hierárquica e routing externo ao modelo em todos os
   milestones seguintes.
-- Avançar para o Milestone 2 apenas quando solicitado: integração do Laya
-  multilingual e endpoint de classificação sem routing.
+- A classificação do Milestone 2 cobre categoria. Manter a classificação
+  hierárquica, a taxonomia YAML e confidence gating para o Milestone 3.
 
 ## Arquivos relacionados
 
 ```text
 app/api.py
+app/classifier.py
+benchmarks/inference.py
 Dockerfile
 docker-compose.yml
 tests/test_api.py
@@ -38,6 +42,7 @@ AgentDATA/Knowledge/2026-09-23T08-38-41+00-00_laya_ticket_router_implementation_
 
 ## Proxima acao sugerida
 
-Implementar o Milestone 2 e, após a primeira carga real do Laya, atualizar este
-contexto e o baseline com tempo de carga, versão validada, benchmark de
-inferência e o contrato real de `/v1/classify-only`.
+Implementar o Milestone 3: criar `config/taxonomy.yaml`, classificar categoria
+e subcategoria hierarquicamente e acrescentar confidence handling com testes
+unitários. Reavaliar os tempos quando a pergunta de subcategoria estiver
+integrada.

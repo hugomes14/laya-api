@@ -10,6 +10,12 @@ services:
       USE_TF: "0"
       OMP_NUM_THREADS: "4"
       MKL_NUM_THREADS: "4"
+      TORCH_NUM_THREADS: "4"
+      TORCH_NUM_INTEROP_THREADS: "1"
+      LOAD_MODEL: "${LOAD_MODEL:-true}"
+      LAYA_MODEL_ID: "${LAYA_MODEL_ID:-convaiinnovations/laya}"
+      LAYA_MODEL_SUBFOLDER: "${LAYA_MODEL_SUBFOLDER:-multilingual}"
+      LAYA_DEVICE: "cpu"
       MODEL_NAME: "${MODEL_NAME:-laya-multilingual}"
       MODEL_VERSION: "${MODEL_VERSION:-bootstrap}"
       HF_HOME: "/models/huggingface"
@@ -25,7 +31,7 @@ services:
       interval: 30s
       timeout: 5s
       retries: 3
-      start_period: 30s
+      start_period: 180s
 
 volumes:
   laya-model-cache:
