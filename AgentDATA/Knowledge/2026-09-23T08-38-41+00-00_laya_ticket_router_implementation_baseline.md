@@ -10,10 +10,10 @@
 
 ## Achado
 
-`LAYA_TICKET_ROUTER_IMPLEMENTATION.md` é a fonte de verdade para a primeira
-versão do serviço. Define um microserviço Flask em Docker que usa Laya
-multilingual para classificar tickets hierarquicamente e mantém o routing como
-lógica determinística externa ao modelo.
+Este registo é a referência canónica de implementação para a primeira versão
+do serviço. Define um microserviço Flask em Docker que usa Laya multilingual
+para classificar tickets hierarquicamente e mantém o routing como lógica
+determinística externa ao modelo.
 
 ## Contexto
 
@@ -28,15 +28,14 @@ Milestone 1: shell Flask/Docker, `/health`, `/ready` e respetivos testes.
 
 ## Metodo
 
-Foi feita a leitura integral do plano de implementação, com revisão das
-decisões já tomadas, milestones, contratos de API, requisitos de segurança,
-restrições de hardware e critérios de aceitação.
+Foi feita a leitura integral da especificação de implementação antes da sua
+retirada do repositório, com revisão das decisões já tomadas, milestones,
+contratos de API, requisitos de segurança, restrições de hardware e critérios
+de aceitação.
 
 ## Comandos
 
 ```bash
-wc -l LAYA_TICKET_ROUTER_IMPLEMENTATION.md
-rg -n '^#' LAYA_TICKET_ROUTER_IMPLEMENTATION.md
 .venv/bin/pytest -q
 docker compose config --quiet
 ```
@@ -72,7 +71,8 @@ Fatos definidos no plano:
 ## Codigo relevante
 
 ```text
-LAYA_TICKET_ROUTER_IMPLEMENTATION.md  # especificação completa
+AgentDATA/Knowledge/2026-09-23T08-38-41+00-00_laya_ticket_router_implementation_baseline.md
+                                        # especificação canónica resumida
 app/api.py                            # shell do Milestone 1 e readiness
 Dockerfile                            # serving CPU com Gunicorn
 docker-compose.yml                    # cache persistente e healthcheck
@@ -114,8 +114,8 @@ Qualquer alteração futura deve preservar:
 - Os benchmarks de inferência existentes não estimam duração de fine-tuning.
 - Os datasets públicos e sintéticos não substituem progressivamente dados reais
   corrigidos por humanos.
-- O workspace não tem repositório Git inicializado, portanto não foi possível
-  produzir commit para esta atualização.
+- A especificação original foi retirada após esta consolidação; detalhes novos
+  devem ser registados diretamente neste baseline ou em registos específicos.
 
 ## Pendencias
 

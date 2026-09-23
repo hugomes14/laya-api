@@ -12,9 +12,10 @@
   ser integrado, comportamento intencional antes do Milestone 2.
 - Os testes atuais passam: `3 passed`.
 - O Docker Compose e a construção da imagem foram validados no Milestone 1.
-- `LAYA_TICKET_ROUTER_IMPLEMENTATION.md` permanece a especificação de origem.
-- O workspace ainda não é um repositório Git; `git status` devolve erro de
-  repositório inexistente.
+- O baseline em `AgentDATA/Knowledge/` é a referência canónica de
+  implementação; a especificação original foi retirada após a consolidação.
+- O workspace é um repositório Git na branch `main`, a acompanhar
+  `origin/main` em `git@github.com:hugomes14/laya-api.git`.
 
 ## Decisoes
 
@@ -28,7 +29,6 @@
 ## Arquivos relacionados
 
 ```text
-LAYA_TICKET_ROUTER_IMPLEMENTATION.md
 app/api.py
 Dockerfile
 docker-compose.yml
@@ -39,5 +39,5 @@ AgentDATA/Knowledge/2026-09-23T08-38-41+00-00_laya_ticket_router_implementation_
 ## Proxima acao sugerida
 
 Implementar o Milestone 2 e, após a primeira carga real do Laya, atualizar este
-contexto com tempo de carga, versão validada, benchmark de inferência e o
-contrato real de `/v1/classify-only`.
+contexto e o baseline com tempo de carga, versão validada, benchmark de
+inferência e o contrato real de `/v1/classify-only`.
